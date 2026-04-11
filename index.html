@@ -63,13 +63,17 @@
             transform: translateY(20px);
             animation: fadeUpReveal 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
-        .delay-1 { animation-delay: 0.2s; }
-        .delay-2 { animation-delay: 0.5s; }
-        .delay-3 { animation-delay: 0.8s; }
-        .delay-4 { animation-delay: 1.1s; }
+        .delay-1 { animation-delay: 0.15s; }
+        .delay-2 { animation-delay: 0.20s; }
+        .delay-3 { animation-delay: 0.35s; }
+        .delay-4 { animation-delay: 0.40s; }
 
         @keyframes fadeUpReveal {
             to { opacity: 1; transform: translateY(0); }
+        }
+        .img-instant {
+        animation-delay: 0s !important;
+        animation-duration: 0.3s !important;
         }
 
         .btn-main {
@@ -211,7 +215,6 @@
 
          <!-- 🌟 SCENE เหตุการณ์จำลอง อันที่ 1 : ความเร็วปกติ -->
         <div id="scene-pre-quiz-1" class="scene">
-            <!-- เอา <br> ออก และปรับ margin-bottom ให้เป็น 0 -->
             <h2 class="story-text delay-1" style="color: #f39c12; font-size: 2.5em; text-shadow: 1px 1px 3px rgba(0,0,0,0.15); margin-bottom: 0;">
                 สวัสดีวันจันทร์
             </h2>
@@ -333,7 +336,7 @@
           <!-- ฉากโหลดประมวลผล หน้าที่ 1 -->
         <div id="scene-calculating-1" class="scene">
             <!-- เพิ่มคลาส bouncing-text และปรับ font-size เป็น 24px -->
-            <h3 class="bouncing-text" style="text-align: center; color: #888; margin-bottom: 20px; font-size: 24px;">อยู่ระหว่างประมวลผลพลัง... ⏳</h3>
+            <h3 class="bouncing-text" style="text-align: center; color: #888; margin-bottom: 20px; font-size: 24px;">กำลังประมวลผลพลัง... ⏳</h3>
             
             <h2 class="loading-text story-text delay-1" style="font-size: 24px;">ไม่มีพลังไหนดีกว่าใคร ! 🌟</h2>
             <div class="text-left story-text delay-2" style="margin-top: 20px; line-height: 1.8; font-size: 12px;">
@@ -348,7 +351,7 @@
         <!-- ฉากโหลดประมวลผล หน้าที่ 2 -->
         <div id="scene-calculating-2" class="scene">
             <!-- เพิ่มคลาส bouncing-text และปรับ font-size เป็น 24px เช่นเดียวกัน -->
-            <h3 class="bouncing-text" style="text-align: center; color: #888; margin-bottom: 20px; font-size: 24px;">อยู่ระหว่างประมวลผลพลัง... ⏳</h3>
+            <h3 class="bouncing-text" style="text-align: center; color: #888; margin-bottom: 20px; font-size: 24px;">กำลังประมวลผลพลัง... ⏳</h3>
             
             <p class="story-text delay-1" style="font-size: 16px;">ในโลกการทำงาน เราไม่ได้ต้องการพลังแบบเดียว<br>แต่ต้องการพลังที่ต่างกัน มาช่วยกันมอง ช่วยกันคิด ช่วยกันตัดสินใจ</p>
             
@@ -771,8 +774,8 @@
                     document.getElementById('final-card-img').src = `images/${characterResult}.png`;
                     switchScene('scene-result');
                     
-                }, 8000); // แก้ไขเป็น 8 วินาที
-            }, 8000); // แก้ไขเป็น 8 วินาที
+                }, 6000); // แก้ไขเป็น 6 วินาที
+            }, 6000); // แก้ไขเป็น 6 วินาที
         }
 
         function downloadResult() {

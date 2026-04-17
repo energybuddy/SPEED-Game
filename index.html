@@ -429,7 +429,19 @@
     </div>
 
 <script>
+        // รายชื่อรูปภาพทั้งหมดที่ต้องการโหลดล่วงหน้า
+        const imagesToPreload = [
+            'images/q1.gif', 'images/q2.gif', 'images/q3.gif', 'images/q4.gif',
+            'images/q5.gif', 'images/q6.gif', 'images/q7.gif', 'images/q8.gif',
+            'images/q9.gif', 'images/q10.gif', 'images/q11.gif', 'images/q12.gif'
+        ];
         
+        // ฟังก์ชันสั่งโหลดรูปเก็บไว้ใน Cache
+        imagesToPreload.forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
+            
         // ข้อมูลคำถามฉบับเต็ม 12 ข้อ ไม่มีการตัดทอน
         const questions = [
             { q: `<div style="text-align:center;"><div style="font-size:2em; font-weight:bold; color:#d63031; margin-bottom:10px;

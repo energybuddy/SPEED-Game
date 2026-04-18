@@ -435,13 +435,13 @@
             'images/q5.gif', 'images/q6.gif', 'images/q7.gif', 'images/q8.gif',
             'images/q9.gif', 'images/q10.gif', 'images/q11.gif', 'images/q12.gif'
         ];
-        
+
         // ฟังก์ชันสั่งโหลดรูปเก็บไว้ใน Cache
         imagesToPreload.forEach(src => {
             const img = new Image();
             img.src = src;
         });
-            
+        
         // ข้อมูลคำถามฉบับเต็ม 12 ข้อ ไม่มีการตัดทอน
         const questions = [
             { q: `<div style="text-align:center;"><div style="font-size:2em; font-weight:bold; color:#d63031; margin-bottom:10px;
@@ -650,35 +650,30 @@
 
         // ประมวลผลสุดท้าย
         function processFinalStep() {
-            // ไปหน้า Loading 3 วินาที
+            // 1. ไปหน้า Loading ทันที
             switchScene('scene-final-loading');     
 
+            // 2. คำนวณ Mascot ล่วงหน้าตั้งแต่วินาทีนี้เลย
+            const t1 = ['G', 'R', 'C'].reduce((a, b) => scores[a] >= scores[b] ? a : b);
+            const t2 = ['D', 'E', 'IB'].reduce((a, b) => scores[a] >= scores[b] ? a : b);
+            const combination = t1 + t2;       
+
+            const charMap = {
+                'GD': 'sunny', 'GE': 'thermie', 'GIB': 'sparky',
+                'RD': 'breezy', 'RE': 'meadowy', 'RIB': 'minera',
+                'CD': 'ripple', 'CE': 'wavey', 'CIB': 'flowie'
+            };
+            const character = charMap[combination] || 'sunny';
+
+            // 3. สั่งโหลดภาพรอไว้เลย (Pre-assign source)
+            // ระหว่างที่คนดูเห็นหน้า Loading 3 วินาที เบราว์เซอร์จะดาวน์โหลดภาพนี้รอไว้เบื้องหลัง
+            const finalImg = document.getElementById('final-card-img');
+            finalImg.src = `images/${character}.png`;
+
+            // 4. พอครบ 3 วินาที ค่อยสลับหน้า
             setTimeout(() => {
-
-                // อัลกอริทึมคำนวณ Mascot
-                const t1 = ['G', 'R', 'C'].reduce((a, b) => scores[a] >= scores[b] ? a : b);
-                const t2 = ['D', 'E', 'IB'].reduce((a, b) => scores[a] >= scores[b] ? a : b);
-                const combination = t1 + t2;       
-
-                const charMap = {
-                    'GD': 'sunny', 
-                    'GE': 'thermie', 
-                    'GIB': 'sparky',
-                    'RD': 'breezy', 
-                    'RE': 'meadowy', 
-                    'RIB': 'minera',
-                    'CD': 'ripple', 
-                    'CE': 'wavey', 
-                    'CIB': 'flowie'
-                };
-             
-                const character = charMap[combination] || 'sunny';              
-
-                // แสดงผลลัพธ์
-                document.getElementById('final-card-img').src = `images/${character}.png`;
                 switchScene('scene-result');
-            }, 3000); // 3 วินาทีตามโจทย์
-
+            }, 3000); 
         }
 
         // ฟังก์ชันดาวน์โหลดรูปภาพ

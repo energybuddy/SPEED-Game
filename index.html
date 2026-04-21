@@ -653,7 +653,7 @@
             // 1. ไปหน้า Loading ทันที
             switchScene('scene-final-loading');     
 
-            // 2. คำนวณ Mascot ล่วงหน้าตั้งแต่วินาทีนี้เลย
+            // 2. คำนวณ Mascot
             const t1 = ['G', 'R', 'C'].reduce((a, b) => scores[a] >= scores[b] ? a : b);
             const t2 = ['D', 'E', 'IB'].reduce((a, b) => scores[a] >= scores[b] ? a : b);
             const combination = t1 + t2;       
@@ -665,10 +665,13 @@
             };
             const character = charMap[combination] || 'sunny';
 
-            // 3. สั่งโหลดภาพรอไว้เลย (Pre-assign source)
-            // ระหว่างที่คนดูเห็นหน้า Loading 3 วินาที เบราว์เซอร์จะดาวน์โหลดภาพนี้รอไว้เบื้องหลัง
+            // 3. สั่งโหลดภาพรอไว้
             const finalImg = document.getElementById('final-card-img');
             finalImg.src = `images/${character}.png`;
+
+            // --- ส่วนที่เพิ่มใหม่: ส่งข้อมูลไป Google Sheet ---
+            sendDataToSheet(character, combination, scores);
+            // ------------------------------------------
 
             // 4. พอครบ 3 วินาที ค่อยสลับหน้า
             setTimeout(() => {
@@ -684,6 +687,30 @@
             link.click();
         }
 
+       // ฟังก์ชันส่งข้อมูลเข้า Google Sheet
+        async function sendDataToSheet(character, combination, allScores) {
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwiSLLSgL6Q21LD_T_8IvrWrN5e7BZZHNAozfrIWNy3RRE5geGyRZNcoKTiIf-4vbtFBA/exec';
+            
+            const payload = {
+                character: character,
+                combination: combination,
+                scores: allScores
+            };
+
+            try {
+                // ส่งข้อมูลโดยใช้โหมด no-cors เพื่อลดปัญหาเรื่องสิทธิ์การเข้าถึงจากเบราว์เซอร์
+                fetch(scriptURL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    cache: 'no-cache',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                console.log("Data sent to Google Sheet!");
+            } catch (error) {
+                console.error("Error sending data:", error);
+            }
+        }
     </script>
 
     </body>

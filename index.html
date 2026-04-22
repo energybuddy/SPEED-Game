@@ -37,15 +37,15 @@
             background: rgba(255, 255, 255, 0.88);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            padding: 40px;
+            padding: 25px;
             border-radius: 28px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.2);
             max-width: 600px;
             width: 100%;
-            min-height: 620px;
+            min-height: 580px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -90,18 +90,19 @@
         .info-grid {
             display: flex; /* เปลี่ยนจาก grid เป็น flex เพื่อคุมระยะห่างแนวดิ่งง่ายขึ้น */
             flex-direction: column;
-            gap: 15px;
-            margin: 20px 0;
+            gap: 12px;
+            margin: 15px 0;
         }
 
         .info-card {
             background: #F7F6F5;
             color: #2d3436;
-            padding: 22px;
-            border-radius: 24px;
+            padding: 12px 16px;
+            border-radius: 20px;
             text-align: left;
-            border-left: 10px solid #ffcc00; /* เพิ่มความหนาให้ดูเป็น Block ชัดๆ */
+            border-left: 6px solid #ffcc00; /* เพิ่มความหนาให้ดูเป็น Block ชัดๆ */
             box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            margin-bottom: 0 !important;   /* ลบ margin ของเดิมออก เพราะเราใช้ gap แทนแล้ว */
             position: relative;
         }
 
@@ -117,17 +118,17 @@
 
         /* ปรับส่วนข้อความอธิบาย */
         .info-card .desc-main {
-            font-size: 1.25em;
+            font-size: 0.95em;
             font-weight: 500;
             color: #2d3436;
             margin-bottom: 2px;
-            line-height: 1.3;
+            line-height: 1.2;
         }
 
         .info-card .desc-sub {
-            font-size: 1em;
+            font-size: 0.85em;
             color: #666;
-            line-height: 1.4;
+            line-height: 1.3;
         }
 
         /* ขอบสีแยกตามหมวดหมู่ */
@@ -213,7 +214,7 @@
             <div class="story-text delay-2">
                 <img src="images/earth.gif" alt="Spinning Earth" style="width: 300px; margin: 10px auto; display: block;">
             </div>
-            <p class="story-text delay-3" style="font-weight: 500; color: #2d3436; font-size: 1.3em; line-height: 1.5;">
+            <p class="story-text delay-3" style="font-weight: 500; color: #2d3436; font-size: 1.3em; line-height: 1;">
                 เราทุกคนล้วนมี "พลังงาน"<br>ที่ไม่เหมือนใคร
             </p>
             <button class="btn-main story-text delay-4" onclick="switchScene('scene-2')">มาค้นหากันเถอะ!</button>
@@ -301,7 +302,7 @@
         <div id="scene-pre-quiz-3" class="scene">
             <div class="mid-reveal-box">
                 <h2>ไม่ว่าจะรู้สึกยังไง... 😅</h2>
-                <p style="font-size: 1.3em; font-weight: bold; color: #dab601;">คุณก็ได้รับ <br>Assign Project นี้แล้ว</p>
+                <p style="font-size: 1.3em; font-weight: bold; color: #dab601;">คุณก็ได้รับมอบหมาย<br> "โปรเจกต์" นี้แล้ว</p>
                 <p>สูดหายใจลึกๆ... <br>แล้วมาเริ่มกันดีกว่าาาา</p>
                 <button class="btn-main" onclick="startQuiz()">ลุยกันเลย ! 🚀</button>
             </div>
@@ -330,78 +331,80 @@
 
         <div id="scene-step-grc" class="scene">
                 <div class="story-text delay-1" style="margin-bottom: 25px;">
-                    <h2 style="color: #2d3436; font-size: 1.2em; margin-bottom: 5px;">ตอบครบถ้วนแล้ว✔</h2>
+                    <h2 style="color: #2d3436; font-size: 1.2em; margin-bottom: 5px;">ตอบครบถ้วนแล้ว ✔</h2>
                     <p style="color: #555; font-size: 1.2em; font-weight: 500; margin-top: 5px; margin-bottom: 20px;">ก่อนอื่น... อยากจะบอกว่า</p>
-                    <h2 style="color: #2d3436; font-size: 1.4em; font-weight: 700; line-height: 1.3;">
-                        พลังของคุณ<br>ไม่ได้เกิดขึ้นโดยบังเอิญ<br>
-                        <span style="color: #fd7f0a;">แต่คือรหัสพลังงานที่ซ่อน<br>อยู่ในตัวคุณ ผ่าน...</span>
+                    <h2 style="color: #a4000e; font-size: 1em; font-weight: 700; line-height: 1.2;">
+                        พลังของคุณไม่ได้เกิดขึ้นโดยบังเอิญ<br>
+                        <span style="color: #fd7f0a;">แต่คือรหัสพลังงานที่ซ่อนอยู่<br> ผ่าน...พลังขับเคลื่อนองค์กร</span>
                     </h2>
                 </div>
 
-                <h2 class="bouncing-text" style="color: #fd7f0a; font-size: 3.5em; font-weight: 900; margin: 15px 0; line-height: 1; text-shadow: 2px 2px 0px #fff, 5px 5px 15px rgba(253, 127, 10, 0.3); animation: bounce 1.5s infinite ease-in-out; display: inline-block; visibility: visible !important; opacity: 1 !important;">
+                <h2 class="bouncing-text" style="color: #fd7f0a; font-size: 2.5em; font-weight: 900; margin: 5px 0; line-height: 1; text-shadow: 2px 2px 0px #fff, 5px 5px 15px rgba(253, 127, 10, 0.3); animation: bounce 1.5s infinite ease-in-out; display: inline-block; visibility: visible !important; opacity: 1 !important;">
                 GRC ⚖️ </h2>
-                <p style="color: #fd7f0a; font-size: 1.2em; font-weight: 500; margin-top: 5px; margin-bottom: 20px;">(พลังขับเคลื่อนองค์กร)</p>
 
                 <div class="info-grid">
                     <div class="info-card card-g story-text delay-2">
-                        <b style="color: #2ecc71 !important; font-size: 1.5em !important;">Governance</b>
-                        <div class="desc-main" style="font-size: 1.2em !important; font-weight: 600;">การกำกับดูแลกิจการที่ดี</div>
-                        <div class="desc-sub" style="font-size: 1em !important;">พลังที่ทำให้เป้าหมายชัดเจน ดำเนินงานอย่างโปร่งใส และยุติธรรม</div>
+                        <b style="color: #2ecc71 !important; font-size: 1.2em !important;">Governance</b>
+                        <div class="desc-main" style="font-size: 1em !important; font-weight: 600;">การกำกับดูแลกิจการที่ดี</div>
+                        <div class="desc-sub" style="font-size: 0.8em !important;">พลังที่ทำให้เป้าหมายชัดเจน ดำเนินงานอย่างโปร่งใส และยุติธรรม</div>
                     </div>
 
                     <div class="info-card card-r story-text delay-3">
-                        <b style="color: #e74c3c !important; font-size: 1.5em !important;">Risk Management</b>
-                        <div class="desc-main" style="font-size: 1.2em !important; font-weight: 600;">การบริหารความเสี่ยงที่มีประสิทธิภาพ</div>
-                        <div class="desc-sub" style="font-size: 1em !important;">พลังที่มองเห็นความเสี่ยงล่วงหน้า ช่วยให้เตรียมรับมือได้อย่างมั่นใจ</div>
+                        <b style="color: #e74c3c !important; font-size: 1.2em !important;">Risk Management</b>
+                        <div class="desc-main" style="font-size: 1em !important; font-weight: 600;">การบริหารความเสี่ยงที่มีประสิทธิภาพ</div>
+                        <div class="desc-sub" style="font-size: 0.8em !important;">พลังที่มองเห็นความเสี่ยงล่วงหน้า ช่วยให้เตรียมรับมือได้อย่างมั่นใจ</div>
                     </div>
 
                     <div class="info-card card-c story-text delay-4">
-                        <b style="color: #3498db !important; font-size: 1.5em !important;">Compliance</b>
-                        <div class="desc-main" style="font-size: 1.2em !important; font-weight: 600;">การปฏิบัติงานตามกฎหมายและระเบียบอย่างถูกต้อง</div>
-                        <div class="desc-sub" style="font-size: 1em !important;">พลังที่ทำให้ทุกการทำงานถูกต้อง รักษามาตรฐานอย่างยั่งยืน</div>
+                        <b style="color: #3498db !important; font-size: 1.2em !important;">Compliance</b>
+                        <div class="desc-main" style="font-size: 1em !important; font-weight: 600;">การปฏิบัติงานตามกฎหมายและระเบียบอย่างถูกต้อง</div>
+                        <div class="desc-sub" style="font-size: 0.8em !important;">พลังที่ทำให้ทุกการทำงานถูกต้อง รักษามาตรฐานอย่างยั่งยืน</div>
                     </div>
                 </div>
                 
-                <button class="btn-main story-text delay-5" style="margin-top: 25px;" onclick="switchScene('scene-step-deib')">
+                <button class="btn-main story-text delay-5" style="margin-top: 15px;" onclick="switchScene('scene-step-deib')">
                     ไปดูพลังอีกด้านกัน
                 </button>
         </div>
 
         <div id="scene-step-deib" class="scene">
             <div class="story-text delay-1" style="margin-bottom: 25px;">
-                <h2 style="color: #2d3436; font-size: 1.2em; margin-bottom: 5px;">นอกจากนี้</h2>
-                <p style="color: #555; font-size: 1.2em; font-weight: 500; margin-top: 5px; margin-bottom: 20px;">ยังมีอีกหนึ่งรหัสพลังงาน...</p>
-                
-                <h2 class="bouncing-text" style="color: #ca124f; font-size: 3.5em; font-weight: 900; margin: 15px 0; line-height: 1; text-shadow: 2px 2px 0px #fff, 5px 5px 15px rgba(202, 18, 79, 0.3); animation: bounce 1.5s infinite ease-in-out; display: inline-block; visibility: visible !important; opacity: 1 !important;">
+                <h2 style="color: #2d3436; font-size: 1.4em; margin-bottom: 5px;">นอกจากนี้</h2>
+                <p style="font-weight: 500; margin-bottom: 20px;">
+                    <span style="color: #555; font-size: 1.1em;">ยังมีอีกหนึ่งรหัสพลังงาน...</span> 
+                    <br><span style="color: #ca124f; font-size: 1.2em;">พลังแห่งหัวใจและผู้คน</span>
+                </p>
+                <h2 class="bouncing-text" style="color: #ca124f; font-size: 2.5em; font-weight: 900; margin: 15px 0; line-height: 1; text-shadow: 2px 2px 0px #fff, 5px 5px 15px rgba(202, 18, 79, 0.3); animation: bounce 1.5s infinite ease-in-out; display: inline-block;">
                     DEI&B 🌈
                 </h2>
-                
-                <p style="color: #ca124f; font-size: 1.2em; font-weight: 500; margin-top: 5px;">(พลังแห่งหัวใจและผู้คน)</p>
-            </div> <div class="info-grid">
+            </div>
+
+            <div class="info-grid">
                 <div class="info-card card-d story-text delay-2">
-                    <b style="color: #9b59b6 !important; font-size: 1.5em !important; text-transform: uppercase;">Diversity</b>
-                    <div class="desc-main" style="font-size: 1.2em !important; font-weight: 600;">การเคารพในความแตกต่าง</div>
-                    <div class="desc-sub" style="font-size: 1em !important;">พลังที่มองเห็นคุณค่าในตัวตนและมุมมองที่หลากหลาย</div>
+                    <b style="color: #9b59b6 !important; font-size: 1.3em !important; text-transform: uppercase;">Diversity</b>
+                    <div class="desc-main">การเคารพในความแตกต่าง</div>
+                    <div class="desc-sub">พลังที่มองเห็นคุณค่าในตัวตนและมุมมองที่หลากหลาย</div>
                 </div>
 
                 <div class="info-card card-e story-text delay-3">
-                    <b style="color: #f1c40f !important; font-size: 1.5em !important; text-transform: uppercase;">Equity</b>
-                    <div class="desc-main" style="font-size: 1.2em !important; font-weight: 600;">ความเสมอภาค</div>
-                    <div class="desc-sub" style="font-size: 1em !important;">พลังที่มอบโอกาสอย่างเหมาะสม เพื่อให้ทุกก้าวเดินหน้าไปด้วยกัน</div>
+                    <b style="color: #f1c40f !important; font-size: 1.3em !important; text-transform: uppercase;">Equity</b>
+                    <div class="desc-main">ความเสมอภาค</div>
+                    <div class="desc-sub">พลังที่มอบโอกาสอย่างเหมาะสม เพื่อให้ทุกก้าวเดินหน้าไปด้วยกัน</div>
                 </div>
 
                 <div class="info-card card-ib story-text delay-4">
-                    <b style="color: #ff7f00 !important; font-size: 1.5em !important; text-transform: uppercase;">Inclusion & Belonging</b>
-                    <div class="desc-main" style="font-size: 1.2em !important; font-weight: 600;">การสร้างความรู้สึกร่วม</div>
-                    <div class="desc-sub" style="font-size: 1em !important;">พลังที่ทำให้ทุกคนกล้าเป็นตัวเองและรู้สึกเป็นส่วนหนึ่งของทีม</div>
+                    <b style="color: #ff7f00 !important; font-size: 1.3em !important; text-transform: uppercase;">Inclusion & Belonging</b>
+                    <div class="desc-main">การสร้างความรู้สึกร่วม</div>
+                    <div class="desc-sub">พลังที่ทำให้ทุกคนกล้าเป็นตัวเองและรู้สึกเป็นส่วนหนึ่งของทีม</div>
                 </div>
-            </div>
-
-            <button class="btn-main story-text delay-5" style="margin-top: 25px;" onclick="switchScene('scene-step-summary')">
-                เข้าใจแล้ว
-            </button>
+            </div> 
             
-        </div> <div id="scene-step-summary" class="scene">
+            <button class="btn-main story-text delay-5" style="margin-top: 25px;" onclick="switchScene('scene-step-summary')">
+                เข้าใจแล้ว ไปกันต่อ
+            </button>
+        </div>
+            
+        <div id="scene-step-summary" class="scene">
             <div class="mid-reveal-box">
                 <p style="font-size: 1.2em; line-height: 1.6;">เมื่อ "ระบบที่เป๊ะ" <br> ผสานกับ "ใจที่เปิดรับ"<br>จึงเกิดเป็นพลังงานที่พิเศษ<br>ในแบบของคุณ!</p>
                 <button class="btn-main" style="background: linear-gradient(90deg, #FFE44D, #E8000D, #009B5E, #7C3AED, #1D4ED8); color: white; border: none; padding: 15px 30px; border-radius: 50px; font-weight: bold; cursor: pointer;" onclick="processFinalStep()">
@@ -411,7 +414,7 @@
         </div>
 
         <div id="scene-final-loading" class="scene">
-            <h3 class="bouncing-text" style="font-size: 24px; color: #ff9f43; margin-top: 80px;">กำลังวิเคราะห์พลังงาน... <br>⏳</h3>
+            <h3 class="bouncing-text" style="font-size: 24px; color: #ff9f43; margin-top: 80px;">กำลังวิเคราะห์พลังงาน...</h3>
             <img src="images/jisaw.gif" style="width: 150px; margin: 20px auto; display: block;">
         </div>
 
@@ -448,9 +451,9 @@
                 ">งานใหม่เข้ามา !</div><img src="images/q1.gif" style="width:100px; margin:10px 0;"><div style="font-size:1.3em; font-weight:500;
                 ">สิ่งแรกที่คุณจะนึกถึงคือ…</div></div>`,
               choices: [
-                  { t: "งานนี้ทำไปเพื่ออะไร แล้วใครต้องทำบ้าง จะได้เห็นภาพรวมก่อน", v: "G" },
-                  { t: "เดี๋ยวนะ มีอะไรเสี่ยงมั้ยงานนี้ จะได้ไม่พลาดทีหลัง", v: "R" },
-                  { t: "งานนี้เกี่ยวกับกฎระเบียบอะไรบ้างนะ ขอเช็คก่อน จะได้ทำให้ถูก", v: "C" }
+                  { t: "ขอเห็นภาพรวมก่อน ว่าเป้าหมายคืออะไร ต้องร่วมงานกับใคร", v: "G" },
+                  { t: "เริ่ด ท้าทายดี เป็นโอกาสที่ดีในการได้ลองอะไรใหม่ ๆ", v: "R" },
+                  { t: "งานนี้ทำยังไงนะ มีขั้นตอน หรือระเบียบบอกไว้บ้างรึเปล่า", v: "C" }
               ]
             },
 
@@ -458,9 +461,9 @@
                 ">นัดคุยทีมครั้งแรก</div><img src="images/q2.gif" style="width:100px; margin:10px 0;"><div style="font-size:1.2em; font-weight:500;
                 ">คุณต้องทำโปรเจกต์กับทีม <br> ที่หลายสไตล์ ทั้งคนใหม่และเก่า <br> คุณจะ...</div></div>`,
               choices: [
-                  { t: "ให้ทุกคนแชร์ไอเดียก่อนเลย จะมีหลาย ๆ มุมมอง", v: "D" },
-                  { t: "ดูก่อนว่าทีมแต่ละคนถนัดอะไร แล้วจัดงานให้เหมาะกับแต่ละคน", v: "E" },
-                  { t: "สร้างบรรยากาศ ให้ทุกคนรู้สึกโอเค จะได้ทำงานด้วยกันราบรื่น", v: "IB" }
+                  { t: "เก็บไอเดียตัวเองไว้ก่อน รอฟังของคนอื่นก่อน", v: "D" },
+                  { t: "เสนอของตัวเองก่อนเลย จะได้ไม่ซ้ำกับคนอื่น", v: "E" },
+                  { t: "รอสรุปไอเดียจากทุกคน เดินทางสายกลาง", v: "IB" }
               ]
             },
 
@@ -468,9 +471,9 @@
                 ">ไอเดียเริ่มแตกต่าง</div><img src="images/q3.gif" style="width:100px; margin:10px 0;"><div style="font-size:1.3em; font-weight:500;
                 ">แต่ละคนเสนอไอเดียไม่เหมือนกัน <br> คุณจะเลือกจาก…</div></div>`,
               choices: [
-                  { t: "ไอเดียที่ “ตรงเป้าหมายที่สุด” แม้บางอย่างยังต้องไปเช็คทีหลัง", v: "G" },
-                  { t: "ไอเดียที่ “ความเสี่ยงชัดและคุมได้” แม้อาจไม่ใช่ตัวที่ดีที่สุด", v: "R" },
-                  { t: "ไอเดียที่ “ไม่ผิดกฎแน่นอน” แม้อาจต้องตัดตัวเลือกที่ดูน่าสนใจออก", v: "C" }
+                  { t: "ไอเดียที่มีทฤษฎี หลักการรองรับ", v: "G" },
+                  { t: "ไอเดียที่มีแปลกใหม่ ไม่เคยมีใครทำมาก่อน", v: "R" },
+                  { t: "ไอเดียที่มีรายละเอียด ขั้นตอนชัดเจน ไม่ลอย", v: "C" }
               ]
             },
 
@@ -478,9 +481,9 @@
                 ">มีคนเริ่มไม่ค่อยพูด</div><img src="images/q4.gif" style="width:100px; margin:10px 0;"><div style="font-size:1.3em; font-weight:500;
                 ">หลังจากนั้น <br>บรรยากาศเริ่มเงียบลง คุณจะ...</div></div>`,
               choices: [
-                  { t: "ลองเสนอไอเดียที่ต่างออกไปเลย คนอื่น ๆ จะได้กล้าคิด กล้าพูดต่อมากขึ้น", v: "D" },
-                  { t: "โยนคำถามง่าย ๆ แล้วให้ทุกคนตอบ จะได้เริ่มพูดคุยกันใหม่", v: "E" },
-                  { t: "เบรกจังหวะนิดนึง ทำให้ทีมผ่อนคลาย กลับมารู้สึกเป็นทีมเดียวกัน แล้วค่อยไปกันต่อ !", v: "IB" }
+                  { t: "ปล่อยไป เค้าอาจจะยังไม่อยากพูดตอนนี้", v: "D" },
+                  { t: "ถามไปตรง ๆ ว่าเป็นอะไรหรือเปล่า? ", v: "E" },
+                  { t: "สวมบทคนชวนคุย ให้ทุกคนได้พูด", v: "IB" }
               ]
             },
 
@@ -488,9 +491,9 @@
                 ">เจอจุด “เอ๊ะ” </div><img src="images/q5.gif" style="width:100px; margin:10px 0;"><div style="font-size:1.3em; font-weight:500;
                 ">ระหว่างทำงาน <br> คุณเห็นบางอย่างดูผิดปกติ <br> คุณจะ...</div></div>`,
               choices: [
-                  { t: "ยกประเด็นขึ้นมาคุยกับทีมทันที เพื่อช่วยกันเช็คให้ชัดว่าเกิดอะไรขึ้น", v: "G" },
-                  { t: "ลองประเมินความเสี่ยงคร่าว ๆ เองก่อน แล้วเตรียมทางรับมือไปเสนอ", v: "R" },
-                  { t: "ย้อนเช็คจุดที่เอ๊ะกับคู่มือ/ระเบียบที่เกี่ยวข้องก่อน เผื่อคิดไปเอง", v: "C" }
+                  { t: "เดี๋ยวเรียกทีมมาช่วยกันเช็คดีกว่า", v: "G" },
+                  { t: "ถ้ามันผิด ทำไงดีอ่ะ", v: "R" },
+                  { t: "ไหนขอดูระเบียบอีกรอบสิ ว่ามันผิดจริงรึเปล่า", v: "C" }
               ]
             },
 
@@ -498,9 +501,9 @@
                 ">Human Error</div><img src="images/q6.gif" style="width:100px; margin:10px 0;"><div style="font-size:1.3em; font-weight:500;
                 ">พบแล้ว <br>มีคนในทีมทำงานพลาดเล็กน้อย <br>คุณจะ...</div></div>`,
               choices: [
-                  { t: "แก้ให้ก่อนเพื่อให้งานเดินต่อ แล้วค่อยบอกเขาทีหลัง", v: "D" },
-                  { t: "บอกเขาตรง ๆ ว่ามีจุดที่ต้องแก้ แล้วให้เขาลองแก้เอง พร้อมคอยซัพพอร์ต", v: "E" },
-                  { t: "ชวนคุยว่าอะไรทำให้พลาด แล้วช่วยกันแก้ไปด้วยกัน", v: "IB" }
+                  { t: "ไม่เป็นไรหรอก เค้าอาจจะนอนน้อย เดี๋ยวแก้ให้ก่อน", v: "D" },
+                  { t: "ไม่เป็นไรหรอก แต่เดี๋ยวบอกเค้าหน่อย ว่าต้องแก้ตรงนี้นะ", v: "E" },
+                  { t: "ไม่เป็นไรหรอก เดี๋ยวไปช่วยกันแก้", v: "IB" }
               ]
             },
 
@@ -508,19 +511,19 @@
                 ">งานเริ่มเร่ง</div><img src="images/q7.gif" style="width:100px; margin:10px 0;"><div style="font-size:1.3em; font-weight:500;
                 ">ไม่ทันแน่เลย <br>มีคนเสนอให้คุณข้ามขั้นตอน <br>เพื่อให้ทันเดดไลน์ คุณจะ...</div></div>`,
               choices: [
-                  { t: "ตกลงกับทีมให้ชัดว่าผลกระทบคืออะไร จะข้ามหรือไม่ข้าม แล้วเดินต่อ", v: "G" },
-                  { t: "ลองหาวิธีทำให้เร็วขึ้น โดยไม่ต้องข้ามขั้นตอน", v: "R" },
-                  { t: "ถ้าขั้นตอนนั้นมีระบุไว้ชัดเจน ขอไม่ข้าม", v: "C" }
+                  { t: "ไม่ข้าม เพราะทีมตกลงกันไว้แต่แรก", v: "G" },
+                  { t: "ไม่ข้าม ถ้าพลาดขึ้นมาแล้วหนักเลย", v: "R" },
+                  { t: "ไม่ข้าม ถ้ามีกฎระเบียบบังคับไว้ให้ทำ", v: "C" }
               ]
             },
 
             { q: `<div style="text-align:center;"><div style="font-size:1.8em; font-weight:bold; color:#d63031; margin-bottom:10px;
                 ">บางงานไม่มีคนรับทำ</div><img src="images/q8.gif" style="width:100px; margin:10px 0;"><div style="font-size:1.3em; font-weight:500;
-                ">บางงานไม่มีคนรับผิดชอบ <br>เกี่ยงกันไปมา คุณจะ...</div></div>`,
+                ">งานมาเพิ่ม แต่ยังไม่มีคนรับผิดชอบ <br>เกี่ยงกันไปมา คุณจะ...</div></div>`,
               choices: [
-                  { t: "เรียกทีมมาเคลียร์ให้ชัดว่าใครต้องรับผิดชอบอะไร", v: "G" },
-                  { t: "กำหนด Check point ตรวจงานระหว่างทาง จะได้ไม่พลาด", v: "R" },
-                  { t: "ยึดตามที่แบ่งงานกันไว้ว่าใครรับผิดชอบทำอะไร", v: "C" }
+                  { t: "กระจายงานที่เพิ่มมาใหม่ ให้ทุกคนในทีมได้รับผิดชอบเท่า ๆ กัน", v: "G" },
+                  { t: "ดูว่าปริมาณงานของใครยังน้อยอยู่ ก็ให้คนนั้นรับผิดชอบไป", v: "R" },
+                  { t: "ดูงานที่เพิ่มว่าเกี่ยวข้องกับงานใคร ก็ให้คนนั้นรับผิดชอบไป", v: "C" }
               ]
             },
 
@@ -528,9 +531,9 @@
                 ">เตรียมคนพรีเซนต์งาน</div><img src="images/q9.gif" style="width:100px; margin:10px 0;"><div style="font-size:1.3em; font-weight:500;
                 ">สถานการณ์คลี่คลายแล้ว <br>ตอนนี้ต้องเลือก 2 คน <br> ไปพรีเซนต์งาน คุณจะ...</div></div>`,
               choices: [
-                  { t: "เลือกคนที่สไตล์ต่างกัน การพรีเซนต์จะได้ดูน่าสนใจและหลากหลายมากขึ้น", v: "D" },
-                  { t: "ลองให้คนที่ยังไม่ค่อยได้พูด ได้มีโอกาสออกมาพรีเซนต์งานบ้าง", v: "E" },
-                  { t: "เลือกคนที่เสนอตัวพรีเซนต์ ผลงานเป็นของทีมร่วมกันอยู่แล้ว", v: "IB" }
+                  { t: "เลือกคนที่สไตล์โดดเด่น จะได้ดูน่าสนใจ", v: "D" },
+                  { t: "เลือกคนที่ยังไม่ค่อยได้พูด ได้ออกมาพรีเซนต์บ้าง", v: "E" },
+                  { t: "เลือกใครก็ได้ ผลงานเป็นของทีมร่วมกันอยู่แล้ว", v: "IB" }
               ]
             },
 
@@ -538,29 +541,29 @@
                 ">ก่อนส่งงาน</div><img src="images/q10.gif" style="width:100px; margin:10px 0;"><div style="font-size:1.3em; font-weight:500;
                 ">โปรเจคใกล้สำเร็จแล้ว... <br>เพิ่งเจอว่ามีบางจุดที่ยังไม่ชัด <br> คุณจะ...</div></div>`,
               choices: [
-                  { t: "ส่งงานตามกำหนดก่อน แล้วค่อยตามแก้จุดที่ยังไม่ชัดทีหลัง", v: "G" },
-                  { t: "เช็คก่อนว่าจุดที่ยังไม่ชัด มีผลกระทบแค่ไหนแล้วค่อยตัดสินใจ", v: "R" },
-                  { t: "แก้จุดที่ยังไม่ชัดให้เรียบร้อยก่อน แล้วค่อยส่งทีเดียว", v: "C" }
+                  { t: "่ส่งไปก่อน ให้ทันเดทไลน์ แล้วค่อยแก้ทีหลัง", v: "G" },
+                  { t: "ขอดูก่อน ถ้าไม่กระทบมากก็ส่งไป", v: "R" },
+                  { t: "ยังไม่ส่ง ขอแก้ให้เรียบร้อยก่อน", v: "C" }
               ]
             },
 
             { q: `<div style="text-align:center;"><div style="font-size:2em; font-weight:bold; color:#d63031; margin-bottom:10px;
                 ">เก่งมาก เสร็จจนได้!</div><img src="images/q11.gif" style="width:100px; margin:10px 0;"><div style="font-size:1.3em; font-weight:500;
-                ">หลังจบงาน <br>คุณคิดว่าสิ่งสำคัญที่สุด<br>ในการทำงานเป็นทีม คือ…</div></div>`,
+                ">หลังจบงาน <br>คุณคิดว่าทีมที่ดี<br>คือทีมแบบไหน…</div></div>`,
               choices: [
-                  { t: "การเปิดรับความเห็นที่หลากหลาย", v: "D" },
-                  { t: "ทุกคนได้รับโอกาสอย่างเท่าเทียมกัน", v: "E" },
-                  { t: "ทุกคนรู้สึกว่าได้มีส่วนร่วมและเป็นส่วนหนึ่งของทีม", v: "IB" }
+                  { t: "ทีมที่เปิดกว้างในการแสดงความคิดเห็น", v: "D" },
+                  { t: "ทีมที่พร้อมจะช่วยเหลือกันเมื่อเกิดปัญหา", v: "E" },
+                  { t: "ทีมที่ทุกคนได้เรียนรู้และลงมือทำร่วมกัน", v: "IB" }
               ]
             },
 
             { q: `<div style="text-align:center;"><div style="font-size:2em; font-weight:bold; color:#d63031; margin-bottom:10px;
                 ">สุดท้าย Feedback</div><img src="images/q12.gif" style="width:100px; margin:10px 0;"><div style="font-size:1.3em; font-weight:500;
-                ">จบงานแล้ว <br>คุณอยากรับ Feedback <br>จากทีมแบบไหน?</div></div>`,
+                ">จบงานแล้ว <br>คุณอยากได้รับคำชม<br>จากทีมแบบไหน?</div></div>`,
               choices: [
-                  { t: "เปิดรับมุมมองจากหลากหลายบทบาท พร้อมช่องทางฟีดแบ็กให้เลือกมากมาย", v: "D" },
-                  { t: "จัดเซสชันที่มีรูปแบบชัดเจน แบ่งเวลาให้ทุกคนสลับกันให้ฟีดแบ็ก", v: "E" },
-                  { t: "สร้างบรรยากาศที่เป็นกันเองและปลอดภัย ให้ทุกคนสามารถสะท้อนจุดอ่อนได้ตรงๆ", v: "IB" }
+                  { t: "คุณเป็นคนที่เข้าใจคนอื่น Mindset การทำงาน เริ่ดมาก", v: "D" },
+                  { t: "คุณเป็นคนที่พึ่งพาได้ Performance หัวแถวสุด ๆ", v: "E" },
+                  { t: "คุณเป็นคนที่ทำงานด้วยแล้วสบายใจ อยากร่วมงานด้วยอีก", v: "IB" }
               ]
             }
 
@@ -619,7 +622,6 @@
         }
 
 
-
         // เก็บผลลัพธ์
         function handleAnswer(v) {
             scores[v]++;
@@ -653,7 +655,7 @@
             // 1. ไปหน้า Loading ทันที
             switchScene('scene-final-loading');     
 
-            // 2. คำนวณ Mascot
+            // 2. คำนวณ Mascot ล่วงหน้าตั้งแต่วินาทีนี้เลย
             const t1 = ['G', 'R', 'C'].reduce((a, b) => scores[a] >= scores[b] ? a : b);
             const t2 = ['D', 'E', 'IB'].reduce((a, b) => scores[a] >= scores[b] ? a : b);
             const combination = t1 + t2;       
@@ -665,13 +667,10 @@
             };
             const character = charMap[combination] || 'sunny';
 
-            // 3. สั่งโหลดภาพรอไว้
+            // 3. สั่งโหลดภาพรอไว้เลย (Pre-assign source)
+            // ระหว่างที่คนดูเห็นหน้า Loading 3 วินาที เบราว์เซอร์จะดาวน์โหลดภาพนี้รอไว้เบื้องหลัง
             const finalImg = document.getElementById('final-card-img');
             finalImg.src = `images/${character}.png`;
-
-            // --- ส่วนที่เพิ่มใหม่: ส่งข้อมูลไป Google Sheet ---
-            sendDataToSheet(character, combination, scores);
-            // ------------------------------------------
 
             // 4. พอครบ 3 วินาที ค่อยสลับหน้า
             setTimeout(() => {
@@ -687,30 +686,6 @@
             link.click();
         }
 
-       // ฟังก์ชันส่งข้อมูลเข้า Google Sheet
-        async function sendDataToSheet(character, combination, allScores) {
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbwiSLLSgL6Q21LD_T_8IvrWrN5e7BZZHNAozfrIWNy3RRE5geGyRZNcoKTiIf-4vbtFBA/exec';
-            
-            const payload = {
-                character: character,
-                combination: combination,
-                scores: allScores
-            };
-
-            try {
-                // ส่งข้อมูลโดยใช้โหมด no-cors เพื่อลดปัญหาเรื่องสิทธิ์การเข้าถึงจากเบราว์เซอร์
-                fetch(scriptURL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    cache: 'no-cache',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                console.log("Data sent to Google Sheet!");
-            } catch (error) {
-                console.error("Error sending data:", error);
-            }
-        }
     </script>
 
     </body>

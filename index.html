@@ -541,7 +541,7 @@
                 ">ก่อนส่งงาน</div><img src="images/q10.gif" style="width:100px; margin:10px 0;"><div style="font-size:1.3em; font-weight:500;
                 ">โปรเจคใกล้สำเร็จแล้ว... <br>เพิ่งเจอว่ามีบางจุดที่ยังไม่ชัด <br> คุณจะ...</div></div>`,
               choices: [
-                  { t: "ส่งไปก่อน ให้ทันเดทไลน์ แล้วค่อยแก้ทีหลัง", v: "G" },
+                  { t: "่ส่งไปก่อน ให้ทันเดทไลน์ แล้วค่อยแก้ทีหลัง", v: "G" },
                   { t: "ขอดูก่อน ถ้าไม่กระทบมากก็ส่งไป", v: "R" },
                   { t: "ยังไม่ส่ง ขอแก้ให้เรียบร้อยก่อน", v: "C" }
               ]
@@ -571,6 +571,7 @@
 
 
         let scores = { G: 0, R: 0, C: 0, D: 0, E: 0, IB: 0 };
+        let userResponses = []; // เพิ่มบรรทัดนี้ครับ
         let currentQIndex = 0;
 
         // ฟังก์ชันสลับหน้า
@@ -624,24 +625,18 @@
 
         // เก็บผลลัพธ์
         function handleAnswer(v) {
+            userResponses.push(v); // เพิ่มบรรทัดนี้เพื่อเก็บคำตอบรายข้อ
             scores[v]++;
             currentQIndex++;
-         
-            // จุด Checkpoint หน้า Mid Reveal (หลังข้อ 6)
+            
             if (currentQIndex === 6) {
                 switchScene('scene-mid-reveal');
-            }
-
-            // เมื่อทำครบทุกข้อ (12 ข้อ)
-            else if (currentQIndex >= 12) {
+            } else if (currentQIndex >= 12) {
                 document.getElementById('progress-fill').style.width = '100%';
-                switchScene('scene-step-grc'); // เข้าสู่ขั้นตอนอธิบายผล 5 หน้า
-            }
-
-            else {
+                switchScene('scene-step-grc');
+            } else {
                 renderQuestion();
             }
-
         }
 
         // ทำต่อหลังหน้า Mid Reveal
@@ -652,10 +647,8 @@
 
         // ประมวลผลสุดท้าย
         function processFinalStep() {
-            // 1. ไปหน้า Loading ทันที
             switchScene('scene-final-loading');     
 
-            // 2. คำนวณ Mascot ล่วงหน้าตั้งแต่วินาทีนี้เลย
             const t1 = ['G', 'R', 'C'].reduce((a, b) => scores[a] >= scores[b] ? a : b);
             const t2 = ['D', 'E', 'IB'].reduce((a, b) => scores[a] >= scores[b] ? a : b);
             const combination = t1 + t2;       
@@ -667,15 +660,41 @@
             };
             const character = charMap[combination] || 'sunny';
 
-            // 3. สั่งโหลดภาพรอไว้เลย (Pre-assign source)
-            // ระหว่างที่คนดูเห็นหน้า Loading 3 วินาที เบราว์เซอร์จะดาวน์โหลดภาพนี้รอไว้เบื้องหลัง
             const finalImg = document.getElementById('final-card-img');
             finalImg.src = `images/${character}.png`;
 
-            // 4. พอครบ 3 วินาที ค่อยสลับหน้า
+            // --- ส่วนที่ส่งข้อมูลไป Google Sheet ---
+            sendDataToSheet(character, combination, scores, userResponses);
+            // ------------------------------------
+
             setTimeout(() => {
                 switchScene('scene-result');
             }, 3000); 
+        }
+
+        // เพิ่มฟังก์ชันส่งข้อมูลนี้เข้าไปด้วยครับ
+        async function sendDataToSheet(character, combination, allScores, responses) {
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzevJ6iZFHpdJeS9kR3OW5DlMoCTa0X07cOlxN_b4K9w_OpZCptYDKnKZOD0yizDRu3qQ/exec';
+            
+            const payload = {
+                character: character,
+                combination: combination,
+                scores: allScores,
+                responses: responses,
+                timestamp: new Date().toLocaleString('th-TH')
+            };
+
+            try {
+                fetch(scriptURL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    cache: 'no-cache',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+            } catch (error) {
+                console.error("Error:", error);
+            }
         }
 
         // ฟังก์ชันดาวน์โหลดรูปภาพ

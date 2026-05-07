@@ -704,7 +704,18 @@
             link.download = 'My_Energy_Buddy_Result.png';
             link.click();
         }
-
+    
+        // ปรับฟังก์ชัน Preload ให้โหลดทีละนิด ไม่แย่งเน็ตหน้าแรก
+        function lazyPreload() {
+            imagesToPreload.forEach((src, index) => {
+                setTimeout(() => {
+                    const img = new Image();
+                    img.src = src;
+                }, 2000 + (index * 500)); // ค่อยๆ โหลดหลังจากหน้าแรกแสดงผลไปแล้ว 2 วินาที
+            });
+        }
+        window.onload = lazyPreload;
+    
     </script>
 
     </body>
